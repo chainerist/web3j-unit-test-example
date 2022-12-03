@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <groupId>com.chainerist.web3j.example</groupId>
+    <artifactId>web3j-unit-test-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <org.web3j.core.version>4.9.4</org.web3j.core.version>
+        <com.beust.klaxon.version>5.6</com.beust.klaxon.version>
+        <org.junit.version>4.13.2</org.junit.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>abi</artifactId>
+            <version>${org.web3j.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>core</artifactId>
+            <version>${org.web3j.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${org.junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>web3j-unit</artifactId>
+            <version>${org.web3j.core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.beust</groupId>
+                    <artifactId>klaxon</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>tech.pegasys.discovery</groupId>
+                    <artifactId>discovery</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.consensys.services</groupId>
+                    <artifactId>quorum-mainnet-launcher</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.splunk.logging</groupId>
+                    <artifactId>splunk-library-javalogging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>klaxon</artifactId>
+            <version>${com.beust.klaxon.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.web3j</groupId>
+                <artifactId>web3j-maven-plugin</artifactId>
+                <version>${org.web3j.core.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources-web3j</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate-sources</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>com.chainerist.web3j.example.generated</packageName>
+                            <sourceDestination>${basedir}/src/main/java</sourceDestination>
+                            <soliditySourceFiles>
+                                <directory>${basedir}/src/main/resources/contracts</directory>
+                                <includes>
+                                    <include>**/*.sol</include>
+                                </includes>
+                            </soliditySourceFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
