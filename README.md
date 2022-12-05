@@ -1,6 +1,6 @@
 # Web3j Unit Test
 
-<p> This is a very basic visual introduction to the concepts about EVMTest. </p>
+<p> This is a very basic introduction to EVMTest which demonstrates the Solidity testing concepts. </p>
 
 ## Setup
 Get the code:
@@ -11,7 +11,7 @@ git clone git@github.com:chainerist/web3j-unit-test-example.git
 
 ## Add Mvn Setting XML
 
-We should add beus artificial management plugin our mvn setting.xml
+We should add Hyperledger Besu repository artifact to our mvn settings.xml
 
 ###### Repository
 ```
@@ -55,13 +55,13 @@ Go to solc compiler relaase page
 https://github.com/ethereum/solidity/releases?page=2
 ```
 
-> Click collepsable assert then download and install solc-windows.exe
+> Click collapsable assert then download and install solc-windows.exe
 
-###### Configure Sloc Relese.json  
+###### Configure Solc Relese.json  
 
 Open **releases.json** of web3j then add your solc compiler version in file
 
-> your releases.json file location is /user/your-username/.web3j/sloc
+> your releases.json file location is /user/your-username/.web3j/solc
 
 You should configure file as below
 
@@ -71,4 +71,4 @@ You should configure file as below
 ```
 
 
-then, you should repeat install dependencies step again, your compiler will success
+then, you should repeat "install dependencies" step again, your compiler will be succeeded.
